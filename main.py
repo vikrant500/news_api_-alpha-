@@ -1,12 +1,12 @@
 import requests
 
 # Enter the API key first
-def get_news(topic, from_date, to_date, language = 'en', api_key = 'a'):
-    url = f'https://newsapi.org/v2/everything?qInTitle={topic}&from={from_date}&to={to_date}8&sortBy=popularity&language={language}&apiKey={api_key}'
+def get_news(country, api_key = 'c246af9bc54b48daabbc30093873c27a'):
+    url = f'https://newsapi.org/v2/top-headlines?country={country}&apiKey={api_key}'
 
     r = requests.get(url)
 
-    content = r.jso()
+    content = r.json()
     articles = content['articles']
     results = []
 
@@ -15,7 +15,7 @@ def get_news(topic, from_date, to_date, language = 'en', api_key = 'a'):
 
     return results
 
-print(get_news(topic='space', from_date='2022-11-25', to_date='2022-11-28'))
+print(get_news(country='us'))
 
 
 # To Do: make a way to save the data in a .csv file or a word document. Make a webpage for the same aswell
